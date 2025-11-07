@@ -3,6 +3,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import productRoutes from './routes/productRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
 
 
 dotenv.config();
@@ -14,6 +16,9 @@ const MONGO_URI = process.env.MONGO_URI;
 
 app.use(cors());
 app.use(express.json()); 
+
+app.use('/api/products', productRoutes);
+app.use('/api/cart', cartRoutes);
 
 
 const connectDB = async () => {
@@ -34,3 +39,8 @@ app.get('/', (req, res) => {
 
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+
+
+
+
