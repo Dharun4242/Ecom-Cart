@@ -3,6 +3,7 @@ import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
 import CheckoutForm from "./components/CheckoutForm";
 import ReceiptModal from "./components/ReceiptModal";
+import Navbar from "./components/Navbar";
 import { fetchCart, removeItemFromCart, addItemToCart, checkout } from "./api";
 import "./index.css";
 
@@ -75,22 +76,19 @@ function App() {
     }
   };
 
+  const handleWishlistClick = () => {
+    alert("Wishlist feature coming soon! ❤️");
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
-      <header className="bg-white shadow-md p-4 sticky top-0 z-10">
-        <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-3xl font-extrabold text-indigo-600">
-            Vibe Commerce
-          </h1>
-          <div className="relative">
-            <span className="text-2xl">🛒</span>
-            <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
-              {cart.items ? cart.items.length : 0}
-            </span>
-          </div>
-        </div>
-      </header>
+      {/* 🛒 Navbar */}
+      <Navbar
+        cartCount={cart.items ? cart.items.length : 0}
+        onWishlistClick={handleWishlistClick}
+      />
 
+      {/* 🛍️ Main Content */}
       <main className="container mx-auto p-4 md:p-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
           <h2 className="text-2xl font-bold mb-4">Featured Products</h2>
